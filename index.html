@@ -3,869 +3,558 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MCC Higher Secondary School</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<title>DSquare Fitness Studio — Villivakkam</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
-    --maroon: #6B1F1F;
-    --gold: #C8A45A;
-    --gold-light: #E8C97A;
-    --cream: #FAF6EF;
-    --dark: #1A0A0A;
-    --mid: #3A1A1A;
-    --text: #2C1A1A;
-    --muted: #8A6A5A;
+    --black: #0a0a0a;
+    --white: #f5f2ec;
+    --red: #39ff14;
+    --red-dark: #28cc0e;
+    --gray: #1c1c1c;
+    --gray-mid: #2e2e2e;
+    --muted: #888;
+    --accent: #39ff14;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--cream);
-    color: var(--text);
-    font-family: 'Cormorant Garamond', serif;
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
     overflow-x: hidden;
   }
 
-  /* ── HEADER ── */
-  header {
-    background: var(--dark);
-    padding: 0 5%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    border-bottom: 2px solid var(--gold);
-    height: 72px;
-  }
-
-  .logo-wrap {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-
-  .crest {
-    width: 46px;
-    height: 46px;
-    border: 2px solid var(--gold);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    color: var(--gold);
-    font-weight: 900;
-    flex-shrink: 0;
-  }
-
-  .logo-text {
-    line-height: 1;
-  }
-
-  .logo-text .name {
-    font-family: 'Playfair Display', serif;
-    font-size: 15px;
-    color: var(--gold-light);
-    letter-spacing: 0.08em;
-    font-weight: 700;
-  }
-
-  .logo-text .sub {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 9px;
-    color: var(--muted);
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    margin-top: 3px;
-  }
-
+  /* ── NAV ── */
   nav {
-    display: flex;
-    gap: 32px;
-    list-style: none;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 3rem;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
   }
-
-  nav a {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #C8B8A8;
-    text-decoration: none;
-    transition: color 0.3s;
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.12em;
+    color: var(--white);
   }
-
-  nav a:hover { color: var(--gold); }
+  .nav-logo span { color: var(--red); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none; font-size: 0.82rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta {
+    background: var(--red); color: var(--black);
+    border: none; padding: 0.65rem 1.6rem;
+    font-family: 'DM Sans', sans-serif; font-size: 0.8rem;
+    letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--red-dark); }
 
   /* ── HERO ── */
   .hero {
-    height: 92vh;
-    min-height: 600px;
-    background: var(--dark);
-    position: relative;
-    display: flex;
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
     align-items: center;
+    padding: 0 3rem;
+    padding-top: 80px;
+    position: relative;
     overflow: hidden;
   }
-
-  .hero-pattern {
-    position: absolute;
-    inset: 0;
-    background-image:
-      repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(200,164,90,0.04) 40px, rgba(200,164,90,0.04) 41px),
-      repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(200,164,90,0.04) 40px, rgba(200,164,90,0.04) 41px);
-  }
-
-  .hero-glow {
-    position: absolute;
-    width: 700px;
-    height: 700px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(107,31,31,0.35) 0%, transparent 70%);
-    top: -150px;
-    right: -100px;
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: 
+      radial-gradient(ellipse 60% 80% at 75% 50%, rgba(57,255,20,0.10) 0%, transparent 70%),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 80px,
+        rgba(255,255,255,0.015) 80px,
+        rgba(255,255,255,0.015) 81px
+      );
     pointer-events: none;
   }
-
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    padding: 0 10%;
-    max-width: 900px;
-    animation: fadeUp 1.2s ease both;
+  .hero-text { position: relative; z-index: 2; }
+  .hero-eyebrow {
+    font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--red); margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 0.8rem;
   }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .hero-year {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.35em;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-
-  .hero-year::before {
+  .hero-eyebrow::before {
     content: '';
-    display: block;
-    width: 40px;
-    height: 1px;
-    background: var(--gold);
+    display: inline-block; width: 32px; height: 1px; background: var(--red);
   }
-
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(42px, 6vw, 80px);
-    font-weight: 900;
-    color: var(--cream);
-    line-height: 1.05;
-    margin-bottom: 18px;
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4.5rem, 9vw, 9rem);
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.8rem;
   }
-
-  .hero h1 em {
-    color: var(--gold);
-    font-style: italic;
-  }
-
-  .hero-motto {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    font-weight: 300;
-    color: var(--muted);
-    font-style: italic;
-    letter-spacing: 0.05em;
-    margin-bottom: 40px;
-  }
-
-  .hero-btn {
-    display: inline-block;
-    padding: 14px 40px;
-    background: transparent;
-    border: 1.5px solid var(--gold);
-    color: var(--gold);
-    font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: all 0.35s;
-  }
-
-  .hero-btn:hover {
-    background: var(--gold);
-    color: var(--dark);
-  }
-
-  .hero-year-badge {
-    position: absolute;
-    right: 8%;
-    bottom: 10%;
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(100px, 14vw, 200px);
-    font-weight: 900;
+  .hero-title .line2 { color: var(--red); }
+  .hero-title .outline {
+    -webkit-text-stroke: 2px var(--white);
     color: transparent;
-    -webkit-text-stroke: 1px rgba(200,164,90,0.12);
-    line-height: 1;
-    pointer-events: none;
-    user-select: none;
   }
-
-  /* ── STATS BAR ── */
-  .stats-bar {
-    background: var(--maroon);
-    padding: 28px 10%;
-    display: flex;
-    justify-content: space-around;
-    gap: 20px;
-    flex-wrap: wrap;
-    border-bottom: 2px solid rgba(200,164,90,0.3);
+  .hero-sub {
+    font-size: 1rem; line-height: 1.7; color: #aaa;
+    max-width: 420px; margin-bottom: 2.5rem;
   }
+  .hero-actions { display: flex; gap: 1rem; align-items: center; }
+  .btn-primary {
+    background: var(--red); color: var(--black);
+    border: none; padding: 1rem 2.5rem;
+    font-family: 'DM Sans', sans-serif; font-size: 0.85rem;
+    letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent; color: var(--white);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 1rem 2.5rem;
+    font-family: 'DM Sans', sans-serif; font-size: 0.85rem;
+    letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+    text-decoration: none; display: inline-flex; align-items: center;
+  }
+  .btn-ghost:hover { border-color: var(--white); }
 
-  .stat {
+  /* hero right panel */
+  .hero-visual {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; align-items: flex-end; gap: 1.5rem;
+  }
+  .rating-badge {
+    background: var(--gray);
+    border: 1px solid var(--gray-mid);
+    padding: 1.5rem 2rem;
     text-align: center;
-    animation: fadeUp 0.8s ease both;
+    width: 160px;
+  }
+  .rating-badge .score {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem; color: var(--accent); line-height: 1;
+  }
+  .rating-badge .stars { color: var(--accent); font-size: 0.9rem; letter-spacing: 0.1em; }
+  .rating-badge .count { font-size: 0.75rem; color: var(--muted); margin-top: 0.3rem; }
+
+  .hours-card {
+    background: var(--gray);
+    border: 1px solid var(--gray-mid);
+    padding: 1.2rem 1.5rem;
+    width: 220px;
+  }
+  .hours-card h4 {
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--red); margin-bottom: 0.8rem;
+  }
+  .hours-card p { font-size: 0.85rem; color: #ccc; }
+  .hours-card .time { color: var(--accent); font-weight: 500; }
+
+  .open-badge {
+    background: var(--red);
+    padding: 0.5rem 1.2rem;
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    font-weight: 500; align-self: flex-end; color: var(--black);
   }
 
-  .stat .num {
-    font-family: 'Playfair Display', serif;
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--gold-light);
-    display: block;
-    line-height: 1;
-  }
-
-  .stat .label {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(250,246,239,0.6);
-    margin-top: 6px;
-    display: block;
-  }
-
-  /* ── SECTION COMMON ── */
-  section { padding: 90px 10%; }
-
-  .section-label {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 10px;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-
-  .section-label::before {
-    content: '';
-    display: block;
-    width: 30px;
-    height: 1px;
-    background: var(--gold);
-  }
-
-  h2.section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(32px, 4vw, 52px);
-    font-weight: 900;
-    color: var(--dark);
-    line-height: 1.1;
-    margin-bottom: 50px;
-  }
-
-  /* ── ABOUT ── */
-  .about { background: var(--cream); }
-
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 80px;
-    align-items: start;
-  }
-
-  .about-text p {
-    font-size: 19px;
-    line-height: 1.8;
-    color: #4A3030;
-    margin-bottom: 20px;
-    font-weight: 400;
-  }
-
-  .pull-quote {
-    border-left: 3px solid var(--gold);
-    padding: 16px 24px;
-    margin: 32px 0;
-    font-style: italic;
-    font-size: 22px;
-    color: var(--maroon);
-    line-height: 1.5;
-    background: rgba(200,164,90,0.06);
-  }
-
-  .about-aside {
-    padding-top: 20px;
-  }
-
-  .info-card {
-    background: var(--dark);
-    padding: 36px;
-    margin-bottom: 20px;
-  }
-
-  .info-card h4 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 10px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 16px;
-  }
-
-  .info-card ul {
-    list-style: none;
-  }
-
-  .info-card li {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 16px;
-    color: #D0C0B0;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(200,164,90,0.12);
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .info-card li:last-child { border-bottom: none; }
-
-  .info-card li span { color: var(--gold-light); }
-
-  /* ── FACILITIES ── */
-  .facilities { background: #F0EAE0; }
-
-  .facilities-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 2px;
-  }
-
-  .facility-item {
-    background: var(--dark);
-    padding: 40px 30px;
-    position: relative;
+  /* ── MARQUEE ── */
+  .marquee-wrap {
+    background: var(--red);
+    padding: 0.8rem 0;
     overflow: hidden;
-    transition: background 0.4s;
-    cursor: default;
-  }
-
-  .facility-item::before {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0;
-    width: 100%; height: 3px;
-    background: var(--gold);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s;
-  }
-
-  .facility-item:hover { background: var(--mid); }
-  .facility-item:hover::before { transform: scaleX(1); }
-
-  .facility-icon {
-    font-size: 28px;
-    margin-bottom: 16px;
-    display: block;
-  }
-
-  .facility-item h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    color: var(--cream);
-    margin-bottom: 8px;
-    font-weight: 700;
-  }
-
-  .facility-item p {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-    line-height: 1.6;
-  }
-
-  /* ── HISTORY TIMELINE ── */
-  .history { background: var(--dark); }
-  .history .section-title { color: var(--cream); }
-
-  .timeline {
     position: relative;
-    padding-left: 60px;
+  }
+  .marquee-track {
+    display: flex; gap: 0;
+    animation: scroll 18s linear infinite;
+    white-space: nowrap;
+  }
+  .marquee-item {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem; letter-spacing: 0.15em;
+    padding: 0 2.5rem;
+    color: rgba(0,0,0,0.85);
+    display: inline-flex; align-items: center; gap: 1rem;
+  }
+  .marquee-item::after { content: '◆'; font-size: 0.5rem; }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
   }
 
-  .timeline::before {
+  /* ── SECTION BASICS ── */
+  section { padding: 6rem 3rem; }
+  .section-label {
+    font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--red); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.7rem;
+  }
+  .section-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--red); }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1; letter-spacing: 0.04em;
+    margin-bottom: 1.5rem;
+  }
+
+  /* ── SERVICES ── */
+  .services { background: var(--gray); }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: var(--gray-mid); margin-top: 3rem;
+  }
+  .service-card {
+    background: var(--gray);
+    padding: 3rem 2.5rem;
+    transition: background 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
     content: '';
-    position: absolute;
-    left: 18px;
-    top: 0; bottom: 0;
-    width: 1px;
-    background: linear-gradient(to bottom, var(--gold), transparent);
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--red);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
   }
-
-  .timeline-item {
-    position: relative;
-    margin-bottom: 50px;
-    animation: fadeUp 0.6s ease both;
+  .service-card:hover { background: #242424; }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon {
+    font-size: 2.5rem; margin-bottom: 1.5rem;
   }
-
-  .timeline-dot {
-    position: absolute;
-    left: -51px;
-    top: 6px;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: var(--gold);
-    border: 3px solid var(--dark);
+  .service-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem; letter-spacing: 0.06em;
+    margin-bottom: 0.8rem;
   }
+  .service-card p { font-size: 0.9rem; color: #999; line-height: 1.7; }
 
-  .timeline-year {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 10px;
-    letter-spacing: 0.3em;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 8px;
+  /* ── TRAINERS ── */
+  .trainers-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;
+    margin-top: 3rem;
   }
-
-  .timeline-item h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    color: var(--cream);
-    font-weight: 700;
-    margin-bottom: 8px;
+  .trainer-card {
+    border: 1px solid var(--gray-mid);
+    padding: 3rem;
+    position: relative; overflow: hidden;
   }
-
-  .timeline-item p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 17px;
-    color: #8A7A6A;
-    line-height: 1.7;
+  .trainer-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--red), var(--accent));
   }
-
-  /* ── ALUMNI ── */
-  .alumni { background: var(--cream); }
-
-  .alumni-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 16px;
-    margin-top: 10px;
+  .trainer-initial {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5rem; color: var(--red); opacity: 0.15;
+    position: absolute; top: 1rem; right: 2rem; line-height: 1;
+    pointer-events: none;
   }
-
-  .alumni-card {
-    background: var(--dark);
-    padding: 24px 20px;
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
+  .trainer-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem; letter-spacing: 0.06em; margin-bottom: 0.4rem;
   }
+  .trainer-title { font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red); margin-bottom: 1.2rem; }
+  .trainer-card p { font-size: 0.9rem; color: #999; line-height: 1.7; }
 
-  .alumni-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(107,31,31,0.25);
+  /* ── REVIEWS ── */
+  .reviews { background: var(--gray); }
+  .reviews-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    margin-top: 3rem;
   }
-
-  .alumni-initials {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background: var(--maroon);
-    border: 1.5px solid var(--gold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    color: var(--gold-light);
-    font-weight: 700;
-    margin: 0 auto 14px;
+  .review-card {
+    background: var(--black); border: 1px solid var(--gray-mid);
+    padding: 2rem;
   }
+  .review-stars { color: var(--accent); font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 1rem; }
+  .review-text { font-size: 0.9rem; color: #bbb; line-height: 1.75; margin-bottom: 1.5rem; font-style: italic; }
+  .review-author { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
 
-  .alumni-card .alumni-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 14px;
-    color: var(--cream);
-    font-weight: 700;
-    line-height: 1.3;
-    margin-bottom: 6px;
+  /* ── LOCATION ── */
+  .location-content {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+    margin-top: 3rem; align-items: start;
   }
+  .location-detail { display: flex; gap: 1.2rem; margin-bottom: 2rem; align-items: flex-start; }
+  .detail-icon { font-size: 1.3rem; margin-top: 0.1rem; flex-shrink: 0; }
+  .detail-text h4 { font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); margin-bottom: 0.3rem; }
+  .detail-text p { font-size: 0.92rem; color: #ccc; line-height: 1.6; }
+  .detail-text a { color: var(--accent); text-decoration: none; }
+  .detail-text a:hover { text-decoration: underline; }
 
-  .alumni-card .alumni-role {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 9px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
-
-  /* ── CONTACT ── */
-  .contact {
-    background: var(--maroon);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-  }
-
-  .contact .section-label::before { background: var(--gold-light); }
-  .contact .section-label { color: var(--gold-light); }
-  .contact .section-title { color: var(--cream); }
-
-  .contact-details p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px;
-    color: rgba(250,246,239,0.75);
-    line-height: 1.8;
-    margin-bottom: 10px;
-  }
-
-  .contact-details strong {
-    color: var(--gold-light);
-    font-weight: 500;
-  }
-
-  .contact-details a {
-    color: var(--gold-light);
-    text-decoration: none;
-    font-style: italic;
-  }
-
-  .contact-map {
-    background: rgba(0,0,0,0.3);
-    border: 1px solid rgba(200,164,90,0.2);
-    padding: 40px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 17px;
-    color: rgba(250,246,239,0.5);
-    font-style: italic;
-    text-align: center;
-    min-height: 220px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-  }
-
-  .contact-map .map-icon { font-size: 40px; }
+  .schedule-table { width: 100%; border-collapse: collapse; }
+  .schedule-table tr { border-bottom: 1px solid var(--gray-mid); }
+  .schedule-table td { padding: 0.7rem 0; font-size: 0.88rem; }
+  .schedule-table td:first-child { color: var(--muted); width: 50%; }
+  .schedule-table td:last-child { color: var(--accent); text-align: right; }
 
   /* ── FOOTER ── */
   footer {
-    background: var(--dark);
-    padding: 36px 10%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-top: 1px solid rgba(200,164,90,0.2);
-    flex-wrap: wrap;
-    gap: 20px;
+    background: var(--black); border-top: 1px solid var(--gray-mid);
+    padding: 2rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
   }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.1em; }
+  .footer-logo span { color: var(--red); }
+  footer p { font-size: 0.78rem; color: var(--muted); }
 
-  .footer-motto {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 16px;
-    color: var(--gold);
-    letter-spacing: 0.05em;
+  /* ── CTA BAND ── */
+  .cta-band {
+    background: var(--red);
+    padding: 4rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--black);
   }
-
-  .footer-copy {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    color: var(--muted);
-    text-transform: uppercase;
+  .cta-band h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    letter-spacing: 0.04em; color: var(--black);
   }
-
-  /* ── DIVIDER ── */
-  .ornament {
-    text-align: center;
-    color: var(--gold);
-    font-size: 22px;
-    letter-spacing: 12px;
-    opacity: 0.5;
-    margin-bottom: 40px;
+  .btn-white {
+    background: var(--white); color: var(--black);
+    border: none; padding: 1rem 2.5rem;
+    font-family: 'DM Sans', sans-serif; font-size: 0.85rem;
+    letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer;
+    white-space: nowrap; flex-shrink: 0;
+    transition: opacity 0.2s;
   }
+  .btn-white:hover { opacity: 0.88; }
 
-  @media (max-width: 768px) {
-    nav { display: none; }
-    .about-grid, .contact { grid-template-columns: 1fr; gap: 40px; }
-    .hero-year-badge { display: none; }
-    section { padding: 60px 6%; }
+  /* ── FADE-IN ANIMATION ── */
+  .fade-up {
+    opacity: 0; transform: translateY(28px);
+    animation: fadeUp 0.7s ease forwards;
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .d1 { animation-delay: 0.1s; }
+  .d2 { animation-delay: 0.25s; }
+  .d3 { animation-delay: 0.4s; }
+  .d4 { animation-delay: 0.55s; }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; }
+    .hero-visual { flex-direction: row; align-items: flex-start; flex-wrap: wrap; }
+    .services-grid { grid-template-columns: 1fr; }
+    .trainers-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .location-content { grid-template-columns: 1fr; }
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .cta-band { flex-direction: column; gap: 1.5rem; text-align: center; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
   }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-  <div class="logo-wrap">
-    <div class="crest">MCC</div>
-    <div class="logo-text">
-      <div class="name">Madras Christian College</div>
-      <div class="sub">Higher Secondary School · Est. 1835</div>
-    </div>
-  </div>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#facilities">Facilities</a>
-    <a href="#history">History</a>
-    <a href="#alumni">Alumni</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">D<span>²</span> Fitness</div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#trainers">Trainers</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#location">Location</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('location').scrollIntoView({behavior:'smooth'})">Join Now</button>
+</nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-pattern"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-content">
-    <div class="hero-year">Established 1835 · Chennai, Tamil Nadu</div>
-    <h1>Shaping Minds,<br><em>Building Legacy</em></h1>
-    <p class="hero-motto">"In Hoc Signo" — In This Sign Conquer</p>
-    <a href="#about" class="hero-btn">Discover Our Story</a>
+  <div class="hero-text">
+    <div class="hero-eyebrow fade-up d1">Villivakkam, Chennai</div>
+    <h1 class="hero-title fade-up d2">
+      <span>PUSH</span><br>
+      <span class="line2">YOUR</span><br>
+      <span class="outline">LIMITS</span>
+    </h1>
+    <p class="hero-sub fade-up d3">
+      DSquare Fitness Studio — where expert coaching meets premium equipment.
+      Train harder. Move better. Become stronger.
+    </p>
+    <div class="hero-actions fade-up d4">
+      <button class="btn-primary" onclick="document.getElementById('location').scrollIntoView({behavior:'smooth'})">Get Started</button>
+      <a class="btn-ghost" href="#services">Explore →</a>
+    </div>
   </div>
-  <div class="hero-year-badge">1835</div>
+
+  <div class="hero-visual fade-up d3">
+    <div class="rating-badge">
+      <div class="score">4.2</div>
+      <div class="stars">★★★★☆</div>
+      <div class="count">44 Reviews on Google</div>
+    </div>
+    <div class="hours-card">
+      <h4>Open Daily</h4>
+      <p><span class="time">5:30 AM – 9:30 PM</span></p>
+      <p style="margin-top:0.4rem; font-size:0.8rem; color:var(--muted);">All 7 days a week</p>
+    </div>
+    <div class="open-badge">Now Open</div>
+  </div>
 </section>
 
-<!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="stat"><span class="num">191+</span><span class="label">Years of Excellence</span></div>
-  <div class="stat"><span class="num">78</span><span class="label">Harrington Road, Chetpet</span></div>
-  <div class="stat"><span class="num">20+</span><span class="label">Distinguished Alumni</span></div>
-  <div class="stat"><span class="num">8 AM</span><span class="label">Daily Assembly</span></div>
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Personal Training</span>
+    <span class="marquee-item">Weight Training</span>
+    <span class="marquee-item">Expert Trainers</span>
+    <span class="marquee-item">Modern Equipment</span>
+    <span class="marquee-item">Open 7 Days</span>
+    <span class="marquee-item">Personal Training</span>
+    <span class="marquee-item">Weight Training</span>
+    <span class="marquee-item">Expert Trainers</span>
+    <span class="marquee-item">Modern Equipment</span>
+    <span class="marquee-item">Open 7 Days</span>
+    <span class="marquee-item">Personal Training</span>
+    <span class="marquee-item">Weight Training</span>
+    <span class="marquee-item">Expert Trainers</span>
+    <span class="marquee-item">Modern Equipment</span>
+    <span class="marquee-item">Open 7 Days</span>
+    <span class="marquee-item">Personal Training</span>
+    <span class="marquee-item">Weight Training</span>
+    <span class="marquee-item">Expert Trainers</span>
+    <span class="marquee-item">Modern Equipment</span>
+    <span class="marquee-item">Open 7 Days</span>
+  </div>
 </div>
 
-<!-- ABOUT -->
-<section class="about" id="about">
-  <div class="section-label">Our Institution</div>
-  <h2 class="section-title">A Legacy of<br>Excellence in Education</h2>
-  <div class="about-grid">
-    <div class="about-text">
-      <p>MCC Higher Secondary School is one of Chennai's most storied institutions, founded in 1835 by Rev. George James Laurie and Rev. Matthew Bowie as St. Andrew's School in Egmore. What began as a modest school for boys has grown into a premier educational landmark.</p>
-      <div class="pull-quote">"Conveying as great an amount of truth as possible through the channel of a good education."</div>
-      <p>Located at its present campus in Chetpet — formerly known as Napier Garden — since 1950, the school blends a rich colonial heritage with modern academic rigour. It is affiliated with the Tamil Nadu State Board and conducts classes from 8 AM to 4 PM daily.</p>
-      <p>MCC is part of the United States Department of State exchange programme and participates in AFS student exchanges to the United States and Japan, giving students a truly global outlook.</p>
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-label">What We Offer</div>
+  <h2 class="section-title">OUR SERVICES</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🏋️</div>
+      <h3>Weight Training</h3>
+      <p>A full suite of free weights, barbells, and resistance machines to build strength, size, and power at every level.</p>
     </div>
-    <div class="about-aside">
-      <div class="info-card">
-        <h4>School at a Glance</h4>
-        <ul>
-          <li>Founded <span>3 April 1835</span></li>
-          <li>Headmaster <span>Dr. G.J. Manohar</span></li>
-          <li>Board <span>Tamil Nadu State</span></li>
-          <li>Medium <span>English & Tamil</span></li>
-          <li>Motto <span>In Hoc Signo</span></li>
-          <li>Type <span>Aided + Self-Finance</span></li>
-        </ul>
+    <div class="service-card">
+      <div class="service-icon">🎯</div>
+      <h3>Personal Training</h3>
+      <p>One-on-one sessions with certified trainers tailored to your specific goals — fat loss, muscle gain, or athletic performance.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💪</div>
+      <h3>Expert Coaching</h3>
+      <p>Our trainers bring deep knowledge of form, programming, and nutrition to keep you safe, progressing, and motivated.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINERS -->
+<section id="trainers">
+  <div class="section-label">Meet the Team</div>
+  <h2 class="section-title">YOUR COACHES</h2>
+  <div class="trainers-grid">
+    <div class="trainer-card">
+      <div class="trainer-initial">R</div>
+      <h3>Rubhan Master</h3>
+      <div class="trainer-title">Head Trainer</div>
+      <p>Incredibly friendly and extremely qualified, Rubhan knows exactly how to push you to your limit while keeping every session safe and effective. His energy in the gym is unmatched.</p>
+    </div>
+    <div class="trainer-card">
+      <div class="trainer-initial">D</div>
+      <h3>David Master</h3>
+      <div class="trainer-title">Senior Trainer</div>
+      <p>With a deep understanding of strength training principles, David guides members with precision and care. Known for his motivating approach and highly knowledgeable programs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="section-label">What Members Say</div>
+  <h2 class="section-title">REAL REVIEWS</h2>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Well equipped gym with super friendly and highly knowledged trainers."</p>
+      <div class="review-author">Google Review</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★☆</div>
+      <p class="review-text">"Limited space but worth working out with those machines and good trainers."</p>
+      <div class="review-author">Google Review</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Well equipped gym, amazing workouts! Both Rubhan Master and David Master are incredibly friendly and extremely qualified — they know how to push you to the limit!"</p>
+      <div class="review-author">Google Review</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2>READY TO START YOUR JOURNEY?</h2>
+  <a href="tel:+918925257666"><button class="btn-white">Call to Enquire</button></a>
+</div>
+
+<!-- LOCATION -->
+<section id="location">
+  <div class="section-label">Find Us</div>
+  <h2 class="section-title">LOCATION & HOURS</h2>
+  <div class="location-content">
+    <div>
+      <div class="location-detail">
+        <div class="detail-icon">📍</div>
+        <div class="detail-text">
+          <h4>Address</h4>
+          <p>Kolathur Main Rd, Makkaram Thottam,<br>Villivakkam, Chennai,<br>Tamil Nadu 600099</p>
+        </div>
       </div>
-      <div class="info-card">
-        <h4>Address</h4>
-        <ul>
-          <li>78, Harrington Road<span></span></li>
-          <li>Chetpet, Chennai<span>600 031</span></li>
-          <li>Tamil Nadu, India<span></span></li>
-          <li>Website <span><a href="http://www.mccschool.edu.in" style="color:var(--gold-light);text-decoration:none;">mccschool.edu.in</a></span></li>
-        </ul>
+      <div class="location-detail">
+        <div class="detail-icon">📞</div>
+        <div class="detail-text">
+          <h4>Phone</h4>
+          <p><a href="tel:+918925257666">089252 57666</a></p>
+        </div>
+      </div>
+      <div class="location-detail">
+        <div class="detail-icon">⭐</div>
+        <div class="detail-text">
+          <h4>Rating</h4>
+          <p>4.2 / 5 — Based on 44 Google Reviews</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- FACILITIES -->
-<section class="facilities" id="facilities">
-  <div class="section-label">Campus Life</div>
-  <h2 class="section-title">World-Class Facilities<br>at the Heart of Chennai</h2>
-  <div class="facilities-grid">
-    <div class="facility-item">
-      <span class="facility-icon">🎾</span>
-      <h3>Tennis Courts</h3>
-      <p>Home of the Britannia Amritraj Tennis Academy — a legacy of sporting excellence.</p>
+    <div>
+      <h4 style="font-size:0.75rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--red);margin-bottom:1rem;">Weekly Schedule</h4>
+      <table class="schedule-table">
+        <tr><td>Monday</td><td>5:30 AM – 9:30 PM</td></tr>
+        <tr><td>Tuesday</td><td>5:30 AM – 9:30 PM</td></tr>
+        <tr><td>Wednesday</td><td>5:30 AM – 9:30 PM</td></tr>
+        <tr><td>Thursday</td><td>5:30 AM – 9:30 PM</td></tr>
+        <tr><td>Friday</td><td>5:30 AM – 9:30 PM</td></tr>
+        <tr><td>Saturday</td><td>5:30 AM – 9:30 PM</td></tr>
+        <tr><td>Sunday</td><td>5:30 AM – 9:30 PM</td></tr>
+      </table>
     </div>
-    <div class="facility-item">
-      <span class="facility-icon">🏊</span>
-      <h3>Swimming Pool</h3>
-      <p>A full-sized pool for competitive swimming and recreational use.</p>
-    </div>
-    <div class="facility-item">
-      <span class="facility-icon">🏏</span>
-      <h3>Cricket Ground</h3>
-      <p>Full-sized cricket ground for training and inter-school competitions.</p>
-    </div>
-    <div class="facility-item">
-      <span class="facility-icon">⚽</span>
-      <h3>Football & Hockey</h3>
-      <p>Dedicated fields for football and hockey, hosted in a large open campus.</p>
-    </div>
-    <div class="facility-item">
-      <span class="facility-icon">🏀</span>
-      <h3>Basketball & Volleyball</h3>
-      <p>Dedicated courts for court sports, encouraging teamwork and fitness.</p>
-    </div>
-    <div class="facility-item">
-      <span class="facility-icon">🔬</span>
-      <h3>Science Laboratories</h3>
-      <p>Two each of Physics, Chemistry, and Junior Science labs, fully equipped.</p>
-    </div>
-    <div class="facility-item">
-      <span class="facility-icon">💻</span>
-      <h3>Computer Labs</h3>
-      <p>Two modern computer labs with Smart Board classrooms for digital learning.</p>
-    </div>
-    <div class="facility-item">
-      <span class="facility-icon">🎭</span>
-      <h3>Auditorium</h3>
-      <p>A large air-conditioned auditorium for cultural events, Annual Day & more.</p>
-    </div>
-    <div class="facility-item">
-      <span class="facility-icon">📚</span>
-      <h3>Library</h3>
-      <p>A well-stocked library supporting academic and independent learning.</p>
-    </div>
-  </div>
-</section>
-
-<!-- HISTORY -->
-<section class="history" id="history">
-  <div class="section-label" style="color:var(--gold);">Our Journey</div>
-  <h2 class="section-title">191 Years of History</h2>
-  <div class="ornament">✦ ✦ ✦</div>
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-year">1835</div>
-      <h3>The Founding</h3>
-      <p>Rev. James Laurie and Rev. Matthew Bowie establish St. Andrew's School in Egmore. Rev. John Anderson renames it the General Assembly School, welcoming 59 boys.</p>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-year">1862</div>
-      <h3>Rev. Dr. William Miller</h3>
-      <p>Miller takes the helm, founding Madras Christian College on a 375-acre wooded campus and transforming the institution into a premier South Asian educational centre.</p>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-year">1877</div>
-      <h3>A New Name</h3>
-      <p>The school receives its enduring name: <em style="color:var(--gold-light);">Madras Christian College</em>. Curriculum is broadened and reputation grows across the region.</p>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-year">1950</div>
-      <h3>The Chetpet Campus</h3>
-      <p>Under Mr. Kuruvilla Jacob, the school moves to its current campus at Napier Garden, Chetpet — a landmark moment in its institutional history.</p>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-year">1973–1992</div>
-      <h3>Dr. Clement Felix Era</h3>
-      <p>The swimming pool, auditorium, hostels, the Britannia Amritraj Tennis Academy, and the MRF Pace Foundation are established. Higher Secondary course is introduced.</p>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-year">2006–Present</div>
-      <h3>Modern Era</h3>
-      <p>Dr. G.J. Manohar introduces Smart Board Classes, nursery and primary sections, student exchange programmes, and career guidance — steering MCC into the 21st century.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ALUMNI -->
-<section class="alumni" id="alumni">
-  <div class="section-label">Notable MCCians</div>
-  <h2 class="section-title">Alumni Who Shaped<br>India & the World</h2>
-  <div class="alumni-grid">
-    <div class="alumni-card">
-      <div class="alumni-initials">MKS</div>
-      <div class="alumni-name">M. K. Stalin</div>
-      <div class="alumni-role">Chief Minister, Tamil Nadu</div>
-    </div>
-    <div class="alumni-card">
-      <div class="alumni-initials">PC</div>
-      <div class="alumni-name">P. Chidambaram</div>
-      <div class="alumni-role">Former Finance Minister</div>
-    </div>
-    <div class="alumni-card">
-      <div class="alumni-initials">ARR</div>
-      <div class="alumni-name">A. R. Rahman</div>
-      <div class="alumni-role">Oscar-Winning Composer</div>
-    </div>
-    <div class="alumni-card">
-      <div class="alumni-initials">LP</div>
-      <div class="alumni-name">Leander Paes</div>
-      <div class="alumni-role">Tennis Grand Slam Champion</div>
-    </div>
-    <div class="alumni-card">
-      <div class="alumni-initials">GVM</div>
-      <div class="alumni-name">Gautham Menon</div>
-      <div class="alumni-role">Filmmaker</div>
-    </div>
-    <div class="alumni-card">
-      <div class="alumni-initials">RKN</div>
-      <div class="alumni-name">R. K. Narayan</div>
-      <div class="alumni-role">Legendary Author</div>
-    </div>
-    <div class="alumni-card">
-      <div class="alumni-initials">NR</div>
-      <div class="alumni-name">N. Ram</div>
-      <div class="alumni-role">Journalist & Publisher</div>
-    </div>
-    <div class="alumni-card">
-      <div class="alumni-initials">SD</div>
-      <div class="alumni-name">Somdev Devvarman</div>
-      <div class="alumni-role">Davis Cup Tennis Star</div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div>
-    <div class="section-label">Find Us</div>
-    <h2 class="section-title">Visit Our<br>Campus</h2>
-    <div class="contact-details">
-      <p><strong>Address</strong><br>78, Harrington Road, Chetpet<br>Chennai, Tamil Nadu – 600 031</p>
-      <p><strong>School Hours</strong><br>Monday – Saturday, 8:00 AM – 4:00 PM</p>
-      <p><strong>Website</strong><br><a href="http://www.mccschool.edu.in">www.mccschool.edu.in</a></p>
-      <p><strong>Affiliated Board</strong><br>Tamil Nadu State Board</p>
-    </div>
-  </div>
-  <div class="contact-map">
-    <span class="map-icon">📍</span>
-    <p>78, Harrington Road<br>Chetpet, Chennai 600 031</p>
-    <a href="https://maps.google.com/?q=MCC+Higher+Secondary+School+Chetpet+Chennai" target="_blank" style="display:inline-block;margin-top:16px;padding:10px 28px;border:1px solid var(--gold);color:var(--gold);font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;">Open in Maps</a>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-motto">"In Hoc Signo" — In This Sign Conquer</div>
-  <div class="footer-copy">© MCC Higher Secondary School, Chennai · Est. 1835</div>
+  <div class="footer-logo">D<span>²</span> Fitness Studio</div>
+  <p>© 2025 DSquare Fitness Studio, Villivakkam, Chennai.</p>
+  <p style="font-size:0.78rem;color:var(--muted);">Built for champions.</p>
 </footer>
 
 </body>
